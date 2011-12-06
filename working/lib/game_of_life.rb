@@ -18,7 +18,7 @@ class ConwayGame
     end
 
     @live_cells.each do |c|
-      next_gen << c if [2,3].member?(live_neighbors[c.coords])
+      next_gen << c if [2].member?(live_neighbors[c.coords])
     end
 
     live_neighbors.each do |k, v|

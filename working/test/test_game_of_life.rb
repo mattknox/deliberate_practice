@@ -1,6 +1,6 @@
 require "rubygems"
 require "test/unit"
-require "game_of_life"
+require "#{File.dirname(__FILE__)}/../lib/game_of_life"
 
 class GameOfLifeTest < Test::Unit::TestCase
   BLANK_LINE = (("." * ConwayGame::DEFAULT_WIDTH) + "\n")
@@ -62,5 +62,3 @@ class GameOfLifeTest < Test::Unit::TestCase
     assert_equal @g.board_state, SEMAPHORE_H_BOARD
   end
 end
-
-puts "***************#{Time.now}****************"
