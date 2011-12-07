@@ -32,11 +32,6 @@ class Game
   end
 end
 
-class Topology
-  def neighbors; raise "implement this method to define a topology"; end
-  def inspect;   raise "implement this method to define a topology"; end
-end
-
 class Grid2D
   def neighbors(c)
     [[-1, -1], [-1, 0], [-1, 1],
