@@ -1,0 +1,1 @@
+As I was going to sleep after trying and failing TDD as if you meant it, it occurred to me that I could probably do conway's game of life pretty fast by monkeypatching array.  Here I try this, in all its ugly monkeypatched glory.
