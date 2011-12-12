@@ -2,7 +2,7 @@ This is an attempt to practice TDD As If You Meant It, as per
 http://gojko.net/2009/02/27/thought-provoking-tdd-exercise-at-the-software-craftsmanship-conference/
 
 the set of rules is below:
-sf=write exactly ONE failing test
+=write exactly ONE failing test
 =make the test from (1) pass by first writing implementation code IN THE TEST
 =create a new implementation method/function by:
   doing extract method on implementation code created as per (2), or
