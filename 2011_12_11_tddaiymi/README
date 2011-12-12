@@ -1,2 +1,19 @@
 This is an attempt to practice TDD As If You Meant It, as per
 http://gojko.net/2009/02/27/thought-provoking-tdd-exercise-at-the-software-craftsmanship-conference/
+
+the set of rules is below:
+sf=write exactly ONE failing test
+=make the test from (1) pass by first writing implementation code IN THE TEST
+=create a new implementation method/function by:
+  doing extract method on implementation code created as per (2), or
+  moving implementation code as per (2) into an existing implementation method
+=only ever create new methods IN THE TEST CLASS
+=only ever create implementation classes to provide a destination for extracting a method created as per (4).
+=populate implementation classes by doing move method from a test class into them
+=refactor as required
+=go to (1)
+
+
+This seems like an ultimately frustrating exercise.  I was able to use it to drive the extremely slow writing of some trivial code (the code to determine whether a cell would be alive or dead next time around), but getting to the next step was very hard, and I had burned a ton of time already getting cells live.  On the other hand, the resulting code had a tiny class that really didn't deserve to be a class at all-it was just a function of 2 arguments.
+
+
