@@ -2,3 +2,7 @@ This is the repository in which I do my deliberate practice in pure coding.  For
 
 =ray tracer
 =modular ORM like in marcel molina's interview question.
+
+
+TODO:
+add a script that will make a git checkin every time I get more tests or more code, as long as everything is green.
