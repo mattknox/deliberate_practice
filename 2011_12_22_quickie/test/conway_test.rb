@@ -7,6 +7,7 @@ class GameOfLifeTest < Test::Unit::TestCase
   EMPTY_BOARD = BLANK_LINE * 10
   LONELY_BOARD = BLANK_LINE + "..#.......\n" + (BLANK_LINE * 8)
   SQUARE_BOARD = BLANK_LINE + ("..##......\n" * 2) + (BLANK_LINE * 7)
+  SEMAPHORE_V_BOARD = ""
 
   def setup
     @game = ConwayGame.new
@@ -24,5 +25,11 @@ class GameOfLifeTest < Test::Unit::TestCase
 
   def test_lonely_board_dies
     @game.set_cells([1, 2])
+  end
+
+  def test_square_board_lives
+    assert_equal @game.state, EMPTY_BOARD
+    @game.evolve
+    assert_equal @game.state, EMPTY_BOARD
   end
 end
