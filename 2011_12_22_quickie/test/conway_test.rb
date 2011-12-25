@@ -31,12 +31,16 @@ class GameOfLifeTest < Test::Unit::TestCase
   end
 
   def test_square_board_lives
-    @game.set_cells([1, 2])
+    @game.set_cells([2, 1], [2, 2], [3, 1], [3, 2] )
+    assert_equal @game.state, SQUARE_BOARD
     @game.evolve
-    assert_equal @game.state, EMPTY_BOARD
+    assert_equal @game.state, SQUARE_BOARD
   end
 
   def test_semaphore
-  #  @game.set
+    @game.set_cells([2, 2], [3, 2], [4, 2])
+    assert_equal @game.state, SEMAPHORE_H_BOARD
+    @game.evolve
+    assert_equal @game.state, SEMAPHORE_V_BOARD
   end
 end
