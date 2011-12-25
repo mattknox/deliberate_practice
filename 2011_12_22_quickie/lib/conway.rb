@@ -30,6 +30,7 @@ class ConwayGame
       next_generation << k if 3 == v
       next_generation << k if 2 == v && live_cells.member?(k)
     end
+    @live_cells = next_generation
   end
 
   def neighbors(cell)
