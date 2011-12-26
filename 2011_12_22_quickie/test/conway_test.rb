@@ -42,5 +42,7 @@ class GameOfLifeTest < Test::Unit::TestCase
     assert_equal @game.state, SEMAPHORE_H_BOARD
     @game.evolve
     assert_equal @game.state, SEMAPHORE_V_BOARD
+    @game.evolve
+    assert_equal @game.state, SEMAPHORE_H_BOARD
   end
 end
