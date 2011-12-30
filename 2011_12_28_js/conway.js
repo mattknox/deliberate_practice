@@ -5,5 +5,4 @@
      passed = passed && result;
      return result && console.info(desc);
    }
-   
  })();
