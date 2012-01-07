@@ -1,9 +1,16 @@
 require "rubygems"
 require "test/unit"
 
-def make_evolver(live_f, neighbor_f)
+LIVE = lambda { |cell, neighbor_count, live_cells|
+  cell if neighbor_count == 3 || ( neighbor_count == 2 && live_cells.member?(cell))
+}
 
+NEIGHBORS = lambda { |cell| [[-1, -1], [-1, 0], [-1, 1],
+                             [0, -1], [0, 1],
+                             [1, -1], [1, 0], [1, 1]].map { |x, y|
+    [cell.first + x, cell.last + y]} }
 
+def make_evolver(live_f = LIVE, neighbor_f = NEIGHBORS)
   def evolve(live_f, neighbor_f, live_cells)
     neighbor_counts = Hash.new(0)
 
@@ -19,18 +26,9 @@ def make_evolver(live_f, neighbor_f)
   lambda { |live_cells| evolve(live_f, neighbor_f, live_cells) }
 end
 
-LIVE = lambda { |cell, neighbor_count, live_cells|
-  cell if neighbor_count == 3 || ( neighbor_count == 2 && live_cells.member?(cell))
-}
-
-NEIGHBORS = lambda { |cell| [[-1, -1], [-1, 0], [-1, 1],
-                             [0, -1], [0, 1],
-                             [1, -1], [1, 0], [1, 1]].map { |x, y|
-    [cell.first + x, cell.last + y]} }
-
 class ConwayTest < Test::Unit::TestCase
   def setup
-    @evolver = make_evolver(LIVE, NEIGHBORS)
+    @evolver = make_evolver
   end
 
   SQUARE = [[1, 1], [1, 2], [2, 1], [2, 2]]
