@@ -1,4 +1,5 @@
-(ns conway.core)
+(ns conway.core
+  (:use clojure.contrib.combinatorics))
 
 (defn- neighbors [[cell-x cell-y]]
   (map (fn [[x y]] [(+ cell-x x) (+ cell-y y)])
