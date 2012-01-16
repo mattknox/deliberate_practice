@@ -37,3 +37,7 @@ exports['equal([1, 2], [1, 2] => true'] = function(){
 exports['empty board is stable'] = function(){
   assert.equal(true, equal([], evolve([])));
 };
+
+exports['empty squareis stable'] = function(){
+  assert.equal(true, equal([[1,1], [1,2], [2,1], [2,2]], evolve([[1,1], [1,2], [2,1], [2,2]])));
+};
