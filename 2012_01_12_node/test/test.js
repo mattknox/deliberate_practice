@@ -5,6 +5,7 @@ function evolve(liveCells) {
 }
 
 function equal(cellSet1, cellSet2) {
+  // js has a retarded == operator, which says [] != []
   if (cellSet1.length != cellSet2.length) {
     return false;
   } else {
