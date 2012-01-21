@@ -2,8 +2,10 @@ function equal(o1, o2) {
   // js has a retarded == operator, which says [] != []
   // this operator does structural equality, so that two
   // arrays that print the same will be equal.
-  if ([].constructor != Array && [].constructor != Object) {
-    return o1 == o2;
+  if (o1.constructor != o2.constructor) {
+    return false;
+  } else if (o1.constructor != Array && o1.constructor != Object) {
+    return o1 === o2;
   } else if (o1.length != o2.length) {
     return false;
   } else if ([].constructor === Array){

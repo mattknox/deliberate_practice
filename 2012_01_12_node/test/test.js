@@ -1,6 +1,5 @@
 var assert = require("assert");
 var conway = require("../conway.js");
-var util = require("util");
 
 exports['equal([], []) => true'] = function(){
   assert.equal(true, conway.equal([], []));
