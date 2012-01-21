@@ -29,3 +29,7 @@ exports['empty square is stable'] = function(){
   assert.equal(true, conway.equal([[1,1], [1,2], [2,1], [2,2]].sort(),
                                   conway.evolve([[1,1], [1,2], [2,1], [2,2]])));
 };
+
+exports["lonely board dies"] = function () {
+  assert.equal(true, conway.equal([], conway.evolve([[1,1]])));
+};
