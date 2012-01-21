@@ -1,0 +1,5 @@
+This is my first attempt at writing anything in coffeescript.  It is an impressively thin layer over javascript, while still providing a sane syntax and better code.
+
+To compile the code and run the expresso tests, run:
+
+coffee -c conway.coffee ; ./node_modules/.bin/expresso
