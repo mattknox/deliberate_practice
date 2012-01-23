@@ -1,5 +1,5 @@
 (function() {
-  var conway, evolve, mattUtil, neighbors, util;
+  var evolve, mattUtil, neighbors, util;
 
   util = require("util");
 
@@ -45,16 +45,8 @@
     })();
   };
 
-  conway = {
-    equal: mattUtil.equal,
-    neighbors: neighbors,
-    evolve: evolve
-  };
+  exports.equal = mattUtil.equal;
 
-  exports.evolve = conway.evolve;
-
-  exports.equal = conway.equal;
-
-  exports.neighbors = conway.neighbors;
+  exports.evolve = evolve;
 
 }).call(this);

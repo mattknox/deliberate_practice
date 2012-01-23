@@ -1,4 +1,3 @@
-util = require("util")
 mattUtil = require("./mattUtil.js") # needed for the equal function
 
 evolve = (liveCells) ->
@@ -15,11 +14,5 @@ neighbors = (cell) ->
   indices = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]]
   res = ([x[0] + Number(cell[0]), x[1] + Number(cell[1])] for x in indices)
 
-conway =
-  equal: mattUtil.equal
-  neighbors: neighbors
-  evolve: evolve
-
-exports.evolve = conway.evolve
-exports.equal  = conway.equal
-exports.neighbors = conway.neighbors
+exports.equal = mattUtil.equal
+exports.evolve = evolve
