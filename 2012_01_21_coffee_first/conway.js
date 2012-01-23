@@ -1,11 +1,9 @@
 (function() {
-  var evolve, mattUtil, neighbors, util;
-
-  util = require("util");
+  var mattUtil, neighbors;
 
   mattUtil = require("./mattUtil.js");
 
-  evolve = function(liveCells) {
+  exports.evolve = function(liveCells) {
     var cell, count, liveMap, neighborCell, neighborCounts, nextGen, _i, _j, _len, _len2, _ref;
     liveMap = {};
     neighborCounts = {};
@@ -46,7 +44,5 @@
   };
 
   exports.equal = mattUtil.equal;
-
-  exports.evolve = evolve;
 
 }).call(this);
