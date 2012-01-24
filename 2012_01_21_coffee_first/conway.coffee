@@ -11,6 +11,6 @@ exports.evolve = (liveCells) ->
 
 neighbors = (cell) ->
   indices = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]]
-  res = ([x[0] + Number(cell[0]), x[1] + Number(cell[1])] for x in indices)
+  res = ([x[0] + cell[0], x[1] + cell[1]] for x in indices)
 
 exports.equal = mattUtil.equal
