@@ -8,24 +8,15 @@
         [1 -1]  [1 0]  [1 1]]))
 
 (defn- count-neighbors [live-cells]
-  (reduce (fn [x y] (conj x [y (inc (or (x y) 0))]))
-                                {}
-                                (reduce into
-                                        '()
-                                        (map (fn [x] (neighbors x))
-                                             live-cells))))
+  (group-by identity (reduce into
+                             '()
+                             (map neighbors live-cells))))
 
-(defn- live? [cell live-neighbor-count live-cells]
+(defn- live? [live-neighbor-count is-live?]
   (or (= 3 live-neighbor-count)
-      (and (= 2 live-neighbor-count) (live-cells cell))))
+      (and is-live? (= 2 live-neighbor-count))))
 
 (defn evolve [live-cells]
   (let [neighbor-counts (count-neighbors live-cells)]
-    (set (filter (fn [c] (live? c (neighbor-counts c) live-cells))
-                 (keys (reduce (fn [x y] (conj x [y (inc (or (x y) 0))]))
-                               {}
-                               (reduce into
-                                       #{}
-                                       (map (fn [x] (neighbors x))
-                                            live-cells))))))))
-
+    (set (filter (fn [c] (live? (count (neighbor-counts c)) (live-cells c)))
+                 (keys neighbor-counts)))))
