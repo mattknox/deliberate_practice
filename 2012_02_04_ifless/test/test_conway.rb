@@ -9,7 +9,11 @@ class Conway
         neighbor_count[c] += 1
       end
     end
-    neighbor_count.map {|k, v| k if (v == 3 || (v == 2 && live_cells.member?(k)))}.compact.sort
+    neighbor_count.map {|k, v| live?(v, live_cells.member?(k)) && k}.compact.sort
+  end
+
+  def live?(count, is_live?)
+    (count == 3 || (count == 2 && is_live?))
   end
 
   def neighbors(center)

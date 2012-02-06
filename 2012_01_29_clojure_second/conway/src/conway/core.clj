@@ -8,13 +8,12 @@
         [1 -1]  [1 0]  [1 1]]))
 
 (defn- count-neighbors [live-cells]
-  (group-by identity (reduce into
-                             '()
+  (group-by identity (reduce into '()
                              (map neighbors live-cells))))
 
-(defn- live? [live-neighbor-count is-live?]
-  (or (= 3 live-neighbor-count)
-      (and is-live? (= 2 live-neighbor-count))))
+(defn- live? [count is-live?]
+  (or (= 3 count)
+      (and is-live? (= 2 count))))
 
 (defn evolve [live-cells]
   (let [neighbor-counts (count-neighbors live-cells)]
