@@ -1,0 +1,1 @@
+This is my attempt to produce a very highly decoupled version of conway's game of life: I want to get to a place where any topology that supports neighbors or some set of methods can be passed in to the game, and the rules can be passed in also.

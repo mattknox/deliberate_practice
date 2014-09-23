@@ -1,0 +1,1 @@
+In reading reg braithwaite's coffe au life, I was struck by the fact that he simply passed in an array of values that spawn and sustain cells.  I wanted to take another whack at implementing it in this way.
