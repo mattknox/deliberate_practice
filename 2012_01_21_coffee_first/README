@@ -1,9 +1,0 @@
-This is my first attempt at writing anything in coffeescript.  It is an impressively thin layer over javascript, while still providing a sane syntax and better code.
-
-To compile the code and run the expresso tests, run:
-
-coffee -c conway.coffee ; ./node_modules/.bin/expresso
-
-
-RESULTS:
-Well, coffeescript is about 2x terser, and probably 10x more pleasant to write in.  It's surprising how little difference their is semantically.  I'll have to compare to clojurescript at some point, to see if I think there is something cool to be done there.  I'Ll also probably do something with node, to see if I like it, possibly as a rails replacement for the api part of apps.
