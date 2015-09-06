@@ -6,17 +6,25 @@
 # then add up the 1 bits
 
 def max_bit(bignum)
-  (Math.log(bignum)/Math.log(2)).floor
+  return 0 if bignum == 0
+  Math.log2(bignum).floor
 end
 
 def bit_at(bignum, x)
   (bignum & (2 ** x)) / 2 ** x
 end
 
-def count_1_bits(bignum)
+def ones_old(bignum)
   max = max_bit(bignum)
   count = 0
   (max + 1).times {|x| count += bit_at(bignum, x) }
+  count
+end
+
+def ones(n)
+  max = max_bit(n)
+  count = 0
+  (0..max).each {|i| count += n[i]}
   count
 end
 
@@ -59,11 +67,22 @@ def bitcount_in_chunks2(bignum, table)
   count
 end
 
+def bitcount_in_chunks3(n, table, chunk_size)
+  count = 0
+  mask = (1 << chunk_size) - 1
+  maxbit = max_bit n
+  (maxbit/ chunk_size.to_f).ceil.times do |i|
+    chunk = (n >>(i * chunk_size)) & mask
+    count += table[chunk]
+  end
+end
+# further benchmarking oddly shows that the naive version of ones is fastest. !?
+
 # benchmark! tl:dr; unreadable hacker's delight method is fast and
 # little memory, table lookup is slighly faster, going by bit is slow
 # as hell.
 #
-# x = Kernel.rand(2 ** 1000); puts Benchmark.realtime {puts bitcount_in_chunks(x)}; puts Benchmark.realtime {puts bitcount_in_chunks2(x, table)}; puts Benchmark.realtime { puts count_1_bits(x)}
+# x = Kernel.rand(2 ** 1000); puts Benchmark.realtime {puts bitcount_in_chunks(x)}; puts Benchmark.realtime {puts bitcount_in_chunks2(x, table)}; puts Benchmark.realtime { puts ones(x)}
 # 505
 # 0.000242233276367188
 # 505
