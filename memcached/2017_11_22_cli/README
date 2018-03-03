@@ -1,0 +1,5 @@
+This is an implementation of a memcached server in ruby, inspired by an interview question I got from Neil Williams at reddit, and then by a suggestion from my brother @joshuaknox.
+
+Josh's contribution was that for interview-style problems, it is approximately always easier to write a server program as something that takes STDIN and STDOUT and expose it with netcat -l -p $port -e yourprogram than it is to wrangle sockets in whatever your language is.  This seems like a deep failing to provide high-enough-level libraries in the languages in question-something to think about later.
+
+This can be run 3 different ways:  from pry/irb with require, from a shell by running ruby, and as a server with netcat as described above.
