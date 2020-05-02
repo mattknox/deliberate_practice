@@ -24,3 +24,33 @@
 # pokerHandRanking(["3h", "5h", "Qs", "9h", "Ad"]) ➞ "High Card"
 
 # pokerHandRanking(["10s", "10c", "8d", "10d", "10h"]) ➞ "Four of a Kind"
+require "set"
+module PokerScorer
+  RANKS = %w{A K Q J 10 9 8 7 6 5 4 3 2}
+  def self.pokerHandRanking(hand) # represented as an array as above
+    ranks = hand.inject(Hash.new(0)) {|m, x| m[x[0..-2]] += 1; m }
+    is_flush = ::Set.new(hand.map {|x| x[-1] }).size == 1 # only one suit == flush
+    is_straight = RANKS.each_cons(5).any? {|x| Set.new(x) == Set.new(ranks.keys)}
+    if is_flush && is_straight and ranks["A"]
+      "Royal Flush"
+    elsif is_flush && is_straight
+      "Straight Flush"
+    elsif ranks.values.max == 4
+      "Four of a Kind"
+    elsif ranks.values.sort == [2, 3]
+      "Full House"
+    elsif is_flush
+      "Flush"
+    elsif is_straight
+      "Straight"
+    elsif ranks.values.max == 3
+      "Three of a Kind"
+    elsif ranks.values.sort == [1, 2, 2]
+      "Two Pair"
+    elsif ranks.values.max == 2
+      "Pair"
+    else
+      "High Card"
+    end
+  end
+end
