@@ -43,6 +43,4 @@ class TestConway < Test::Unit::TestCase
       assert !Cell.new(live, neighbors).will_be_live?
     end
   end
-
-
 end
